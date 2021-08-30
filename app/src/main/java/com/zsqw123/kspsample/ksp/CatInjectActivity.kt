@@ -10,13 +10,16 @@ import com.zsqw123.kspsample.databinding.ActKspBinding
  * Author zsqw123
  * Date 2021/8/8 16:43
  */
-class KSPActivity : AppCompatActivity() {
+class CatInjectActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val user = CatInjects.getAllInstances<IUser>().first { it.getAge() == 3 }
+        val user0 = CatInjects.getAllInstances<IUser>().first { it.getAge() == 3 }
+        val user10 = CatInjects.getAllInstances<IUser>().first { it.getAge() == 1 }
+        val user11 = CatInjects.getAllInstances<IUser>().first { it.getAge() == 1 }
         ActKspBinding.inflate(layoutInflater).apply {
             setContentView(root)
-            val text = "name:${user.getName()}\nage:${user.getAge()}"
+            val text = "name:${user0.getName()}\nage:${user0.getAge()}\n" +
+                "user10===user11:${user10 === user11}"
             kspTv.text = text
         }
     }
